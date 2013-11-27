@@ -17,8 +17,14 @@ function scene:enterScene( event )
 	bg:setFillColor( 1, 1, 1)
 	bg.alpha = 1
 	group:insert( bg )
+
+	local testText = display.newText( "Alpha Test", 80, 300, native.systemFont, 50 )
+	testText:setFillColor(0,0,0,1)
+	testText.x = centerX
+	testText.y = centerY + 350
+	group:insert( testText )
 	
-  -- Color Box
+	 -- Color Box
 	local colorBox = display.newRect( centerX, centerY + 350, screenWidth-100, 200 )
 	colorBox:setFillColor( red, green, blue, alpha )
 	group:insert( colorBox )
@@ -71,7 +77,7 @@ function scene:enterScene( event )
 		elseif event.target.id == "Alpha Slider" then
 			alpha = (event.value/100)
 			print(alpha)
-			--alphaText.text = event.target.id .. " Value: " .. alpha
+			testText.text = "ALPHA VALUE: ".. alpha
 		end
 		
 		colorBox:setFillColor(red, green, blue, alpha)
